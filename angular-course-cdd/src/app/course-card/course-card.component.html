@@ -1,0 +1,17 @@
+<div class="course-card" *ngIf="course" [ngClass]="cardClass()">
+  <div class="course-title" [ngStyle]="cardStyle()">
+    {{ course.description }}
+  </div>
+
+  @if (course.iconUrl) {
+  <img [src]="course.iconUrl" width="300" alt="Angular Logo" />
+  } @else {
+  <h4>No image available.</h4>
+  }
+
+  <div class="course-description">
+    {{ course.longDescription }}
+  </div>
+
+  <button (click)="onCourseViewed()">View Course</button>
+</div>

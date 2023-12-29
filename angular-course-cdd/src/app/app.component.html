@@ -1,0 +1,32 @@
+<div class="top-menu">
+  <img
+    class="logo"
+    src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png"
+  />
+</div>
+
+<div class="demo">
+  <div>{{ startDate | date : "dd/MMM/yyyy" }}</div>
+  <div>{{ title | titlecase }}</div>
+  <div>{{ price | number : "2.2-3" }}</div>
+  <div>{{ price | currency : "EUR" }}</div>
+</div>
+
+<div class="courses">
+  @for (course of courses | slice:0:5; track course.id; let index = $index; let
+  count = $count; let first = $first; let last = $last){
+  <!-- optional variables: index; count; first; last; even; odd -->
+  <h1 [class.is-first]="first" [class.is-last]="last">
+    {{ index + 1 }}/{{ count }}
+  </h1>
+  <course-card
+    [course]="course"
+    [index]="index"
+    [class.is-first]="first"
+    [class.is-last]="last"
+    (courseSelected)="onCourseSelected($event)"
+  />
+  } @empty {
+  <h1>Not found courses</h1>
+  }
+</div>
